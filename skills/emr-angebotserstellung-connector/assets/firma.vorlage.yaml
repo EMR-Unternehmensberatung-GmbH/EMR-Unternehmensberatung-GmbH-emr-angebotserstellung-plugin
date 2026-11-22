@@ -1,0 +1,123 @@
+# firma.yaml – Stammdaten der Gebäudereinigung
+# Liegt im Claude-Projekt "Kalkulation & Angebote" der Firma.
+# Alles mit XX muss ausgefüllt werden. Der Skill rechnet nicht mit geschätzten Werten.
+
+schema_version: 2
+
+firma:
+  name: "Musterreinigung GmbH"
+  strasse: "Musterstraße 1"
+  plz_ort: "12345 Musterstadt"
+  stadt: "Musterstadt"            # erscheint in "Stadt, Datum"
+  telefon: "XX"
+  email: "XX"
+  web: "XX"                       # leer lassen, wenn keine Webseite
+  geschaeftsfuehrer: ""           # Fußzeile – aus dem Impressum
+  registergericht: ""             # z. B. "Amtsgericht Hamburg"
+  handelsregister: ""             # z. B. "HRB 123456"
+  ust_id: ""                      # z. B. "DE123456789" (sonst steuernummer)
+  steuernummer: ""
+  unterzeichner:
+    name: "XX"
+    funktion: "Geschäftsführung"
+  kontaktperson:                  # Kontakt für den Auftraggeber („Ihr direkter Draht“), z. B. ein Vertriebsmitarbeiter
+    name: ""                      # leer = der Unterzeichner ist Ansprechpartner
+    funktion: ""
+    telefon: ""                   # leer = Telefon der Firma
+    email: ""                     # leer = E-Mail der Firma
+
+material:                         # Hygiene-/Verbrauchsmaterial (optional)
+  aufschlag_prozent: 20           # Aufschlag auf den Einkauf in Prozent
+  preisliste: []                  # Einkaufspreise, z. B. aus einer hochgeladenen Liste:
+                                  # - artikel: "Toilettenpapier 3-lagig, 8 Rollen"
+                                  #   einheit: "Pack"
+                                  #   preis: 4.20
+
+emr:                              # Verbindung zu EMR
+  rueckmeldung: true              # true = der Skill meldet EMR, was er nicht kann oder was korrigiert wurde
+                                  #        (ohne Namen und Adressen von Auftraggebern). false = keine Meldungen.
+
+bank:                             # Fußzeile – vom Nutzer, nicht aus dem Internet
+  name: ""
+  iban: ""
+  bic: ""
+
+logos:
+  eigenes: "logo.png"             # Dateiname im Projekt / im Chat hochladen
+  referenzen: []                  # Kundenlogos (mit Zustimmung), Zertifikate (ISO, Meisterbetrieb, Innung, Gütezeichen),
+                                  # z. B. ["referenz_1.png", "iso_9001.png"] – erscheinen unter „Referenzen und Auszeichnungen“
+  referenzen_geprueft_am: null    # TT.MM.JJJJ – wann bestätigt wurde, dass die Referenzen aktuell sind
+
+bewertungen:                      # nur echte, aktuelle Werte – sonst Block komplett leer lassen
+  google_anzahl: null             # z. B. 37
+  google_sterne: null             # z. B. 4.9
+  stand: null                     # TT.MM.JJJJ – Datum der Zahlen
+
+farben:
+  primaer: "auto"                 # "auto" = markanteste Farbe aus dem Logo; sonst HEX, z. B. "#0A6E7D"
+  akzent: "auto"                  # Häkchen; "auto" = wie primaer
+
+kalkulation:
+  stundensaetze:                  # netto Verrechnungssatz in € je Leistungsart
+    unterhaltsreinigung: XX
+    glasreinigung: XX
+    grundreinigung: XX
+    einmalauftrag: XX
+    hausmeisterservice: XX
+    baureinigung: XX                # Verrechnungssatz Baureinigung (Vollkosten inkl. GK + Gewinn)
+  lohnkosten_pro_stunde: null     # optional, im Onboarding NICHT abfragen; wird nur gesetzt, wenn der
+                                  # Stundensatz-Rechner genutzt wurde -> Deckungsbeitrag im Bericht
+  mindest_deckungsbeitrag_prozent: null
+  zuschlag_faktor: null           # optional, nur für Nacht-/Sonn-/Feiertagszuschläge (RTV): Aufschlag des Betriebs
+                                  # auf den Zuschlag (Lohnnebenkosten, Gemeinkosten, Wagnis/Gewinn). Vom Nutzer.
+  winterdienst:                   # nur wenn Winterdienst angeboten wird – Werte vom Betrieb, nicht schätzen
+    preis_je_m2: null             # € je m² und Einsatz (Räumen + Streuen)
+    bereitschaftspauschale: null  # € je Saison
+
+pruefung:                         # Schwellen für Prüfhinweise (Skill-Standard 20 %, vom Experten bestätigen)
+  lw_abweichung_prozent: 20
+  stunden_abweichung_prozent: 20
+  nachweise_gueltig_tage: 90      # danach fragt der Skill Referenzen/Bewertungen neu ab
+
+angebot:
+  nummer_quelle: "XX"             # mendato_mcp | mendato_manuell | anderes_tool
+                                  #  mendato_mcp     = Skill legt Kalkulation + Angebot in Mendato an und liest die Nummer zurück
+                                  #  mendato_manuell = Nutzer legt Angebot in Mendato an und nennt die Nummer
+                                  #  anderes_tool    = Nutzer legt Angebot in seinem Tool an und nennt die Nummer
+  angebotstool: ""                # nur bei anderes_tool: Name des Tools (z. B. "Lexware")
+  konditionen:                    # überschreibt die Standardkonditionen
+    Ausführungszeitraum: "Sofort / nach Vereinbarung"
+    Zahlungsbedingungen: "Rechnungsfälligkeit zum Monatsende"
+    Auftragsbedingungen: "Ein Reinigungsvertrag wird vereinbart"
+    Gültigkeit des Angebots: "4 Wochen"
+  konditionen_einmalig:           # für einmalige Glas-/Grund-/Sonderaufträge
+    Ausführung: "nach Terminabstimmung"
+    Gültigkeit des Angebots: "4 Wochen"
+  konditionen_winterdienst:       # überschreibt die Winterdienst-Konditionen (Saisonvertrag)
+    Gültigkeit des Angebots: "4 Wochen"
+  konditionen_vertrag_je_einsatz: # für regelmäßige Aufträge mit Preis je Einsatz (z. B. Glas 4x jährlich mit Vertrag)
+    Abrechnung: "je Reinigung nach Ausführung"
+    Auftragsbedingungen: "Ein Vertrag über die regelmäßige Ausführung wird vereinbart"
+    Gültigkeit des Angebots: "4 Wochen"
+  grussformel: "Mit freundlichen Grüßen"
+
+texte: {}                         # optional: eigene Texte je Leistungsart, z. B.
+#  unterhaltsreinigung:
+#    intro: "..."
+#    vorteile: ["...", "..."]
+
+eigene_werte:                     # Werte und Regeln DIESES Betriebs – bleiben bei jedem Skill-Update erhalten.
+                                  # Vorrang vor EMR-Standards (nicht vor Werten, die im Angebot manuell gesetzt sind).
+                                  # Nur Werte, die der Betrieb selbst bestätigt hat. Pflege über firma_erstellen.py --alt.
+  leistungswerte: {}              # Unterhaltsreinigung, m²/h je Raumtyp – für alle Objektarten oder je Objektart:
+                                  #   Büro: 175
+                                  #   Sanitär: {Schule: 135, alle: 145}
+  zeitansaetze: {}                # Minuten je Einheit; überschreibt EMR-Spannen oder legt eigene Ansätze an:
+                                  #   treppenhaus_etage: 12
+                                  #   waschstrasse: {minuten: 45, einheit: "Stk", label: "Waschstraße"}
+  positionen: {}                  # eigene Standardpositionen für Glas/Grund/Sonder/Bau (Einheitspreis ODER Leistungswert):
+                                  #   glas_zweiseitig: {bezeichnung: "Glasreinigung beidseitig", einheit: "m²", einheitspreis: 3.20}
+                                  #   gr_linoleum: {bezeichnung: "Grundreinigung Linoleum", einheit: "m²", leistungswert: 30}
+  regeln: []                      # feste Regeln des Betriebs in Klartext, z. B. "Treppenhäuser mindestens 1,25 Std. je Einsatz"
+  stand: null                     # TT.MM.JJJJ der letzten Änderung
+

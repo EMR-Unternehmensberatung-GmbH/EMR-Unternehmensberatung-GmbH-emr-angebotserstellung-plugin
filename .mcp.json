@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "emr-angebotserstellung": {
+      "type": "http",
+      "url": "https://emr-angebot-kunden-299561094949.europe-west3.run.app/mcp"
+    }
+  }
+}

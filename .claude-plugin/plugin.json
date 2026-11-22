@@ -1,0 +1,19 @@
+{
+  "name": "emr-angebotserstellung",
+  "displayName": "EMR Angebotserstellung",
+  "version": "2.0.2",
+  "description": "Kalkulation und Angebotserstellung für Gebäudereinigungen nach EMR-Standard. Gerechnet wird auf dem EMR-Server, nur für EMR-Kunden mit freigeschaltetem Zugang.",
+  "author": {
+    "name": "EMR Unternehmensberatung GmbH",
+    "url": "https://www.emr-unternehmensberatung.de"
+  },
+  "homepage": "https://www.emr-unternehmensberatung.de",
+  "repository": "https://github.com/EMR-Unternehmensberatung-GmbH/emr-unternehmensberatung-gmbh-emr-angebotserstellung-plugin",
+  "license": "LicenseRef-EMR-Proprietary",
+  "keywords": [
+    "gebäudereinigung",
+    "angebot",
+    "kalkulation",
+    "emr"
+  ]
+}
