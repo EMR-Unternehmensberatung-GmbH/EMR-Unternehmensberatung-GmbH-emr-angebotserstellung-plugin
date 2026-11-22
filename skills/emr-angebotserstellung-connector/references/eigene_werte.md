@@ -38,12 +38,9 @@ künftigen Angebote und bleibt bei Updates erhalten.“ Ohne Ja nichts speichern
 1. Nur die Änderung als JSON nach `/home/claude/firma_daten.json`, z. B.
    `{"eigene_werte": {"leistungswerte": {"Büro": 175}, "regeln": ["…"], "stand": "TT.MM.JJJJ"}}`.
    Regel löschen: `{"eigene_werte": {"regeln_entfernen": ["<genauer Text>"]}}`. Wert außer Kraft setzen: `null`.
-2. ```bash
-   python3 <skill-pfad>/scripts/firma_erstellen.py --daten /home/claude/firma_daten.json \
-     --alt <pfad>/firma.yaml --out /mnt/user-data/outputs/firma.yaml
-   ```
-   Regeln werden ergänzt, nie überschrieben. Meldet das Skript „WARNUNG: … weniger Betriebswerte“, die Datei
-   nicht übergeben, sondern den Fehler suchen.
+2. Bestehende firma.yaml laden, die Änderung einarbeiten und nach `/mnt/user-data/outputs/firma.yaml` schreiben.
+   Regeln werden ergänzt, nie überschrieben. Vorher und nachher die Zahl der Betriebswerte vergleichen. Sind es
+   weniger als vorgesehen, die Datei nicht übergeben, sondern den Fehler suchen.
 3. Datei als Datei ausgeben. Dem Nutzer sagen: alte firma.yaml in den Projektdateien durch die neue ersetzen.
    Claude kann Projektdateien nicht selbst ändern – erst nach dem Ersetzen gilt der Wert in neuen Chats.
 4. Rückmeldung `betriebswert` an EMR senden (`references/rueckmeldung.md`): welcher Wert oder welche Regel, wofür

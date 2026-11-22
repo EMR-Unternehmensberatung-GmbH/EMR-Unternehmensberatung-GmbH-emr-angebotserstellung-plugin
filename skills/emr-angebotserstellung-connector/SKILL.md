@@ -3,7 +3,7 @@ name: emr-angebotserstellung-connector
 description: "Kalkulation und Angebotserstellung für Gebäudereinigungen nach EMR-Standard über den EMR-Angebots-Connector – Unterhaltsreinigung, Glas-, Grund-, Bau- und Sonderreinigung, Hausmeisterservice und Winterdienst. Gerechnet wird auf dem EMR-Server, nur für EMR-Kunden mit freigeschaltetem Zugang; der Skill erstellt daraus Kalkulationstabelle und Angebot als PDF im Design der Firma. IMMER verwenden, wenn ein Reinigungsangebot kalkuliert, geprüft oder als PDF erstellt werden soll, wenn Besichtigungsnotizen, Aufmaße, Leistungsverzeichnisse oder Plaud-Transkripte ausgewertet werden, wenn die Firmendaten (firma.yaml) angelegt werden oder eigene Werte des Betriebs gespeichert werden sollen."
 ---
 
-# EMR Angebotserstellung (Version 2.0.2)
+# EMR Angebotserstellung (Version 2.1.0)
 
 Du arbeitest für eine Gebäudereinigung (oder für EMR im Auftrag einer Gebäudereinigung).
 Ziel: aus einer Anfrage oder Besichtigung ein korrekt kalkuliertes, prüfbares Angebot als PDF.
@@ -70,9 +70,9 @@ Onboarding (firma.yaml) und der Stundensatz-Rechner funktionieren auch ohne Zuga
 ### Schritt 0 – Firmendaten laden
 Suche `firma.yaml` (oder `firma.json`) in den Projektdateien bzw. unter `/mnt/user-data/uploads/`.
 - Nicht vorhanden → `references/onboarding.md` lesen: erst selbst recherchieren (Webseite/Impressum,
-  Projektdateien), dann nur das Fehlende fragen, Datei mit `scripts/firma_erstellen.py` erzeugen.
-- Änderungen (z. B. neuer Stundensatz, IBAN) → `firma_erstellen.py --alt <firma.yaml>` und die neue
-  Datei ausgeben; der Nutzer ersetzt sie in den Projektdateien.
+  Projektdateien), dann nur das Fehlende fragen, Datei nach `assets/firma.vorlage.yaml` schreiben.
+- Änderungen (z. B. neuer Stundensatz, IBAN) → bestehende firma.yaml laden, nur die betroffenen Felder ändern
+  und die neue Datei ausgeben; der Nutzer ersetzt sie in den Projektdateien.
 - Felder mit `XX` → für die betroffene Leistungsart nachfragen, bevor gerechnet wird.
 - `eigene_werte` = Werte und Regeln des Betriebs (Leistungswerte, Zeitansätze, Standardpositionen, Regeln).
   Sie haben Vorrang vor EMR-Standards und bleiben bei Skill-Updates erhalten → `references/eigene_werte.md`.
@@ -159,10 +159,10 @@ Im Schnellangebot das ausführliche Vorgehen höchstens einmal in einem Satz anb
    Den Abschnitt EINORDNUNG (EMR-Erfahrungswerte) in einem Satz zusammenfassen; „TARIF PRÜFEN“ immer weitergeben
    und das Update anbieten.
 4. **Bearbeitbare Tabelle** zum Feinjustieren (wie in Mendato) gleich mitliefern (nicht bei Hausmeister nur mit Monatsstunden):
-   ```bash
-   python3 <skill-pfad>/scripts/kalkulation_tabelle.py --angebot angebot.json --firma <pfad>/firma.yaml \
-     --paket /home/claude/paket.json --assets <ordner mit logo> --out /mnt/user-data/outputs/Kalkulation_<Kunde>.html
-   ```
+   Funktion `dokument_erstellen` mit `art` = `tabelle`, `angebot`, `firma_yaml`, `logos` (Logo-Dateien aus
+   firma.yaml als Dateiname → Base64) und `dateiname` = `Kalkulation_<Kunde>`. Der Server rechnet selbst noch einmal
+   und gibt einen Link zur HTML-Datei zurück (einen Tag gültig). Den Link als klickbaren Link nennen: Datei öffnen,
+   im Browser bearbeiten.
    Dort ändert der Nutzer Leistungswerte, Flächen/Mengen, Turnus, Tage, Stunden, Material und Stundensatz;
    Stunden und Preise rechnen sofort neu. Unten entsteht ein Änderungsblock („Kalkulation anpassen …“),
    den er in den Chat kopiert. Dann: Werte exakt in angebot.json übernehmen (Begründungen in `begruendung`),
@@ -200,12 +200,10 @@ Erst nach Freigabe der Kalkulation. `references/angebotsnummer_mendato.md` lesen
 Nach Freigabe und mit Angebotsnummer:
 Vorher mit der endgültigen angebot.json (mit Angebotsnummer) noch einmal `kalkulation` aufrufen und paket.json
 ersetzen, damit PDF und Kalkulation zum selben Stand gehören.
-```bash
-python3 <skill-pfad>/scripts/angebot_pdf.py --angebot angebot.json --firma <pfad>/firma.yaml \
-  --paket /home/claude/paket.json \
-  --assets <ordner mit logos> --out /mnt/user-data/outputs/Angebot_<Leistungsart>_<Kunde>_<Datum>.pdf
-```
-Mit `--entwurf` erhält jede Seite das Wasserzeichen ENTWURF – für interne Abstimmung vor Freigabe.
+Funktion `dokument_erstellen` mit `art` = `angebot`, `angebot`, `firma_yaml`, `logos` (eigenes Logo und
+Referenzlogos aus firma.yaml als Dateiname → Base64) und `dateiname` = `Angebot_<Leistungsart>_<Kunde>_<Datum>`.
+Die Antwort enthält den Link zum PDF (einen Tag gültig) und die HINWEISE. Den Link als klickbaren Link nennen.
+Mit `entwurf` = true erhält jede Seite das Wasserzeichen ENTWURF – für interne Abstimmung vor Freigabe.
 Ohne den Schalter trägt jede Inhaltsseite das Firmenlogo als dezentes Wasserzeichen.
 
 Aufbau: Deckblatt → Anschreiben → Ihr Angebot im Überblick (Kaufmotive, Preisfeld, Wochentage, Leistungen,
@@ -215,7 +213,7 @@ Logo: Das Skript schneidet leere Ränder automatisch ab und setzt es groß – k
 Nutzer nötig. Farben: `auto` in firma.yaml = markanteste Logofarbe für Überschriften, Linien, Preisfeld und
 Fußzeile. Fußzeile: Anschrift, Kontakt, Bankverbindung, Geschäftsführung/Register/USt-IdNr. – leere Felder
 entfallen; fehlen Bankdaten, einmal darauf hinweisen.
-Danach die gerenderten Seiten kurz selbst ansehen (`pdftoppm -png -r 60`), Fehler beheben, dann PDF übergeben.
+HINWEISE aus der Antwort dem Nutzer nennen und ihn bitten, das PDF vor dem Versand selbst anzusehen.
 
 ### Schritt 6 – Prüf-Gate vor Übergabe
 Alle Punkte müssen „ja“ sein, sonst korrigieren oder offen benennen:
@@ -226,7 +224,7 @@ Alle Punkte müssen „ja“ sein, sonst korrigieren oder offen benennen:
 - Keine Platzhalter (`XX`, „Name Ansprechpartner“) im PDF?
 - Referenzlogos und Google-Bewertung: Gibt das Skript einen HINWEIS zum Prüfdatum aus, den Nutzer fragen,
   ob die Angaben aktuell sind (Kunden noch aktiv, Zustimmung zur Nennung, aktuelle Bewertungszahl).
-  Nach Bestätigung `referenzen_geprueft_am` bzw. `bewertungen.stand` mit `firma_erstellen.py --alt`
+  Nach Bestätigung `referenzen_geprueft_am` bzw. `bewertungen.stand` in der firma.yaml
   aktualisieren und die neue Datei als Datei ausgeben (Austausch im Projekt). Ohne Bestätigung: Block weglassen.
 - Reinigungstage je Bereich passen zum Turnus (sonst gibt das Skript einen Hinweis)?
 - Vertragsart passt zum Auftrag (Einmalauftrag ohne Vertragsbegriffe, Vertrag mit Turnus)?
@@ -245,9 +243,8 @@ Gesendet wird über die Funktion `rueckmeldung_senden` des Connectors.
 Wann, was und wie → `references/rueckmeldung.md`. Fragt der Nutzer nach etwas aus „Was dieser Skill nicht kann“,
 ist das ein Fall für `kann_nicht`.
 
-## Was dieser Skill (V2.0.2) nicht kann
-- Stundensatz-Rechner nur auf Wunsch (`scripts/stundensatz.py`, siehe `references/onboarding.md`);
-  alle Prozentwerte kommen vom Nutzer.
+## Was dieser Skill (V2.1.0) nicht kann
+- Stundensatz-Rechner nur auf Wunsch (Rechenweg in `references/onboarding.md`); alle Prozentwerte kommen vom Nutzer.
 - Keine Standard-Leistungswerte für Grundreinigung – Leistungswert oder Einheitspreis kommt vom Nutzer je Position.
 - Keine Erfolgswahrscheinlichkeit oder „durchsetzbarer Preis“ – EMR-Preisrahmen und Benchmarks nur zur Einordnung.
 - Kein Leistungsverzeichnis in Mendato anlegen und keine Aufträge in Mendato erzeugen.

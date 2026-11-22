@@ -1,26 +1,21 @@
 {
  "_hinweis": "Fingerabdrücke der Dateien dieses Skills, wie EMR ihn ausgeliefert hat. Nicht ändern.",
- "version": "2.0.2",
+ "version": "2.1.0",
  "dateien": {
-  "SKILL.md": "6c62449892051dc38176b499b38159cec402328eb2af1bb77a916fd0e664bd8f",
-  "assets/firma.vorlage.yaml": "23097923b2e628ec41109c12ebe91f0ee31c3353509774faaeb4b96177c7d90c",
+  "SKILL.md": "de57be3055980f9dd978f68100c6e445beae732935febfedc6a80318a0da7ff9",
+  "assets/firma.vorlage.yaml": "4e6e7a068709cbfcb362d023dfa922c9ee9019cedcba485cfd180cc2be46ac82",
   "references/angebot_schema.md": "09161fdce84366fe5343017c81adc65f49a01aa7c6041037bf5d0788fd64615c",
   "references/angebotsnummer_mendato.md": "622bb0a185c682cfcbe3e325f2c430d3dd52868b03c6d6ae7d0e6068b05ee718",
   "references/baureinigung.md": "52071cc696c1df94b01ccfad49afc03df4a3a2808c115100dd5b7189befc8da7",
   "references/benchmarks.md": "d1cc63bbaea764443f52e189cefe8fe17fcd3a2c7f4b9e5f5c53becd53708b89",
   "references/besichtigung.md": "17e42d28c0b4032b7ab509f183673bb4d691d289b3caaac2933d8b5ec1c975b6",
-  "references/eigene_werte.md": "899bedcf0c84c986149fb9602ebc11b97b0615cfe6a74325684a271dce7ee126",
+  "references/eigene_werte.md": "83ddffb866b8956612f4d5ddccaa60bcde5d6336d10c3e2a5d3f851047f5a1fb",
   "references/einmalauftrag.md": "99e7dcf9b5780c1bdfcc3ad00626f6149c10853bc3cfc70b6bb9fc21d162b3bc",
-  "references/emr_erfahrungswerte.md": "ded7936dbddeaa68422aff350a3aee0161bb8e3728a17af406a97783b5776c44",
+  "references/emr_erfahrungswerte.md": "4718257b2784a505034fb5302a65b15f48bc5982f1e45eef1c16bc86fe366a34",
   "references/hausmeister.md": "b298d3dda911432661a1006f8e260ed7370ba368b16e0a1b3bacb667e9c3f573",
-  "references/onboarding.md": "54192b9250e5391341452a747d2f1ae0ab2c55aa5f96a9fc4c598f096cc5df57",
+  "references/onboarding.md": "4e5448ae10f915a415cedb07ec9096d0e4346ca231113cc04a96bb99455b6618",
   "references/rueckmeldung.md": "bc5216462b08ca6483196835afc86c61cc49612ff066e5763cd8cdae6cd94f42",
   "references/unterhaltsreinigung.md": "1147f83e5218a84435e84c6ab2e53d22b789f772f483e7566ce13af6a3f9b670",
-  "references/winterdienst.md": "fcdf9bb3a9b3c20ad793acd4c6aa45c314493bdd14a551a51078a9eedcdec0b7",
-  "scripts/angebot_pdf.py": "de21e693fe6897a5584e07b116637aaac2f3c8576ee07468767b08da12e87869",
-  "scripts/ausgabe.py": "19e998d9d002edc1ed548cd512bd94b55ea398736f0ce0785d62977c5cc7538e",
-  "scripts/firma_erstellen.py": "e594f5c125db15b07afd444ddf069c6d3264a466afa07306956f2a91ec8db13b",
-  "scripts/kalkulation_tabelle.py": "ff3dc6100622ce2bf64f3dd2b2128804034dd13a5ecc0baa3882df50ee22db6a",
-  "scripts/stundensatz.py": "d0b1669f116913ebfd2efc246951599a81e6cb6e7b1517dbf384437b5a68e58b"
+  "references/winterdienst.md": "fcdf9bb3a9b3c20ad793acd4c6aa45c314493bdd14a551a51078a9eedcdec0b7"
  }
 }

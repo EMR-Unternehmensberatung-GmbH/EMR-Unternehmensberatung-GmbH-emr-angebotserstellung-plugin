@@ -108,7 +108,7 @@ texte: {}                         # optional: eigene Texte je Leistungsart, z. B
 
 eigene_werte:                     # Werte und Regeln DIESES Betriebs – bleiben bei jedem Skill-Update erhalten.
                                   # Vorrang vor EMR-Standards (nicht vor Werten, die im Angebot manuell gesetzt sind).
-                                  # Nur Werte, die der Betrieb selbst bestätigt hat. Pflege über firma_erstellen.py --alt.
+                                  # Nur Werte, die der Betrieb selbst bestätigt hat. Änderungen pflegt Claude in dieser Datei.
   leistungswerte: {}              # Unterhaltsreinigung, m²/h je Raumtyp – für alle Objektarten oder je Objektart:
                                   #   Büro: 175
                                   #   Sanitär: {Schule: 135, alle: 145}

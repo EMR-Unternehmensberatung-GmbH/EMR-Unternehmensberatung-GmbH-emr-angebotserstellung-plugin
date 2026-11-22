@@ -50,11 +50,9 @@ ein Angebot Nacht-, Sonntags- oder Feiertagsarbeit enthält).
 ## 3. Datei erzeugen – immer als Datei, nie nur als Text
 1. Gesammelte Werte als JSON nach `/home/claude/firma_daten.json` schreiben (Struktur wie
    `assets/firma.vorlage.yaml`, nur bekannte Felder).
-2. ```bash
-   python3 <skill-pfad>/scripts/firma_erstellen.py --daten /home/claude/firma_daten.json \
-     --out /mnt/user-data/outputs/firma.yaml
-   ```
-   Bei einer Änderung einer bestehenden Datei zusätzlich `--alt <pfad>/firma.yaml`.
+2. Daraus `/mnt/user-data/outputs/firma.yaml` schreiben: Aufbau, Reihenfolge und Kommentare wie
+   `assets/firma.vorlage.yaml`, unbekannte Felder bleiben `XX`. Bei einer Änderung die bestehende Datei laden und
+   nur die betroffenen Felder ändern. Danach die Datei mit `yaml.safe_load` prüfen.
 3. Die Datei mit dem Werkzeug zum Bereitstellen von Dateien ausgeben (z. B. `present_files` mit
    `/mnt/user-data/outputs/firma.yaml`), damit eine Datei-Karte erscheint. **Den YAML-Inhalt nie nur
    in den Chat schreiben.** Steht kein solches Werkzeug zur Verfügung, den Pfad nennen und das sagen.
@@ -69,9 +67,10 @@ ein Angebot Nacht-, Sonntags- oder Feiertagsarbeit enthält).
 ## Stundensatz-Rechner (nur auf Wunsch oder wenn kein Satz vorliegt)
 Abfragen (alles vom Nutzer, keine Vorschläge für Prozentwerte):
 Grundlohn €/h, Lohnnebenkosten %, Gemeinkosten %, Wagnis und Gewinn %, optional Maschinen/Material %.
-```bash
-python3 <skill-pfad>/scripts/stundensatz.py --lohn 14.25 --lnk 70 --gk 15 --gewinn 8 [--material 5]
-```
+Rechenweg, jeden Schritt zeigen und mit Code nachrechnen:
+Lohnkosten = Grundlohn × (1 + Lohnnebenkosten %), Maschinen/Material = Lohnkosten × Material %,
+Gemeinkosten = (Lohnkosten + Maschinen/Material) × Gemeinkosten %, Selbstkosten = Summe,
+Verrechnungssatz = Selbstkosten × (1 + Wagnis/Gewinn %), kaufmännisch auf 0,10 € gerundet.
 Rechenweg zeigen, Satz bestätigen lassen und in `kalkulation.stundensaetze` übernehmen. Die errechneten
 Lohnkosten je Stunde zusätzlich als `kalkulation.lohnkosten_pro_stunde` speichern – dann zeigt der
 Kalkulationsbericht den Deckungsbeitrag automatisch, ohne dass danach gefragt wird.

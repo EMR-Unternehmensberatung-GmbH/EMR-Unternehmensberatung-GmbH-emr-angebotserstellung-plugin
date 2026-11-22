@@ -19,8 +19,8 @@ alte nachwirkt; Update anbieten (Stundensätze in firma.yaml prüfen) und EMR R�
 Gedächtnis nennen – nur aus der Datei oder einer geprüften Quelle mit Link.
 
 ## Stundensatz-Rechner
-`scripts/stundensatz.py` (Grundlohn, Lohnnebenkosten, Gemeinkosten, Wagnis/Gewinn, Material) – alle Prozentwerte vom
-Nutzer. Danach Satz bestätigen lassen; das Skript ordnet ihn beim nächsten Lauf automatisch ein.
+Rechenweg in `references/onboarding.md` (Grundlohn, Lohnnebenkosten, Gemeinkosten, Wagnis/Gewinn, Material) – alle
+Prozentwerte vom Nutzer. Danach Satz bestätigen lassen; die nächste Kalkulation ordnet ihn automatisch ein.
 
 ## Bekannte Widersprüche in den EMR-Quellen (offen, Experte entscheidet)
 - Büro-Leistungswert: Standardtabelle und Matrix v3 gegen ältere EMR-Unterlagen mit niedrigeren Werten. Die
