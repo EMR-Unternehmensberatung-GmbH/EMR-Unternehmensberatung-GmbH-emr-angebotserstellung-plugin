@@ -3,7 +3,7 @@ name: emr-angebotserstellung-connector
 description: "Kalkulation und Angebotserstellung für Gebäudereinigungen nach EMR-Standard über den EMR-Angebots-Connector – Unterhaltsreinigung, Glas-, Grund-, Bau- und Sonderreinigung, Hausmeisterservice und Winterdienst. Gerechnet wird auf dem EMR-Server, nur für EMR-Kunden mit freigeschaltetem Zugang; der Skill erstellt daraus Kalkulationstabelle und Angebot als PDF im Design der Firma. IMMER verwenden, wenn ein Reinigungsangebot kalkuliert, geprüft oder als PDF erstellt werden soll, wenn Besichtigungsnotizen, Aufmaße, Leistungsverzeichnisse oder Plaud-Transkripte ausgewertet werden, wenn die Firmendaten (firma.yaml) angelegt werden oder eigene Werte des Betriebs gespeichert werden sollen."
 ---
 
-# EMR Angebotserstellung (Version 2.2.3)
+# EMR Angebotserstellung (Version 2.2.4)
 
 Du arbeitest für eine Gebäudereinigung (oder für EMR im Auftrag einer Gebäudereinigung).
 Ziel: aus einer Anfrage oder Besichtigung ein korrekt kalkuliertes, prüfbares Angebot als PDF.
@@ -243,7 +243,7 @@ Gesendet wird über die Funktion `rueckmeldung_senden` des Connectors.
 Wann, was und wie → `references/rueckmeldung.md`. Fragt der Nutzer nach etwas aus „Was dieser Skill nicht kann“,
 ist das ein Fall für `kann_nicht`.
 
-## Was dieser Skill (V2.2.3) nicht kann
+## Was dieser Skill (V2.2.4) nicht kann
 - Stundensatz-Rechner nur auf Wunsch (Rechenweg in `references/onboarding.md`); alle Prozentwerte kommen vom Nutzer.
 - Keine Standard-Leistungswerte für Grundreinigung – Leistungswert oder Einheitspreis kommt vom Nutzer je Position.
 - Keine Erfolgswahrscheinlichkeit oder „durchsetzbarer Preis“ – EMR-Preisrahmen und Benchmarks nur zur Einordnung.

@@ -1,7 +1,7 @@
 {
   "name": "emr-angebotserstellung",
   "displayName": "EMR Angebotserstellung",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Kalkulation und Angebotserstellung für Gebäudereinigungen nach EMR-Standard. Gerechnet wird auf dem EMR-Server, nur für EMR-Kunden mit freigeschaltetem Zugang.",
   "author": {
     "name": "EMR Unternehmensberatung GmbH",
