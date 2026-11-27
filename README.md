@@ -24,7 +24,8 @@ erstellt Kalkulationstabelle und Angebot als PDF im Design der eigenen Firma. Ge
   Herunterladen bereit. Danach wird sie gelöscht.
 - Rückmeldungen: Kann der Skill etwas nicht oder korrigiert der Nutzer ein Ergebnis, schickt Claude eine kurze
   Meldung ohne Namen und Kontaktdaten von Auftraggebern an EMR. Claude sagt dem Nutzer das jeweils in einer Zeile.
-- Das Plugin enthält keine Programme. Es besteht aus Anleitungen, Vorlagen und dem Verweis auf den Connector.
+- Das Plugin enthält keine Programme. Es besteht aus einer kurzen Einstiegsanleitung und dem Verweis auf den
+  Connector. Die eigentliche Anleitung lädt Claude bei jedem Angebot vom Server von EMR, nur mit gültigem Zugang.
 
 Der Server läuft bei Google Cloud in Frankfurt. Ein Konto bei EMR und einen laufenden Vertrag braucht, wer rechnen
 will. Fragen an die EMR Unternehmensberatung GmbH: info@emr-unternehmensberatung.de

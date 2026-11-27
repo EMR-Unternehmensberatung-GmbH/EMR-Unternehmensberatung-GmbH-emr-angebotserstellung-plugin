@@ -1,21 +1,7 @@
 {
  "_hinweis": "Fingerabdrücke der Dateien dieses Skills, wie EMR ihn ausgeliefert hat. Nicht ändern.",
- "version": "2.2.5",
+ "version": "3.0.0",
  "dateien": {
-  "SKILL.md": "47f7b510945986be9aa3f50e5e749fa8e074b394161daacafaccd8eed11f40e6",
-  "assets/firma.vorlage.yaml": "4e6e7a068709cbfcb362d023dfa922c9ee9019cedcba485cfd180cc2be46ac82",
-  "references/angebot_schema.md": "09161fdce84366fe5343017c81adc65f49a01aa7c6041037bf5d0788fd64615c",
-  "references/angebotsnummer_mendato.md": "622bb0a185c682cfcbe3e325f2c430d3dd52868b03c6d6ae7d0e6068b05ee718",
-  "references/baureinigung.md": "52071cc696c1df94b01ccfad49afc03df4a3a2808c115100dd5b7189befc8da7",
-  "references/benchmarks.md": "d1cc63bbaea764443f52e189cefe8fe17fcd3a2c7f4b9e5f5c53becd53708b89",
-  "references/besichtigung.md": "17e42d28c0b4032b7ab509f183673bb4d691d289b3caaac2933d8b5ec1c975b6",
-  "references/eigene_werte.md": "83ddffb866b8956612f4d5ddccaa60bcde5d6336d10c3e2a5d3f851047f5a1fb",
-  "references/einmalauftrag.md": "99e7dcf9b5780c1bdfcc3ad00626f6149c10853bc3cfc70b6bb9fc21d162b3bc",
-  "references/emr_erfahrungswerte.md": "4718257b2784a505034fb5302a65b15f48bc5982f1e45eef1c16bc86fe366a34",
-  "references/hausmeister.md": "b298d3dda911432661a1006f8e260ed7370ba368b16e0a1b3bacb667e9c3f573",
-  "references/onboarding.md": "4e5448ae10f915a415cedb07ec9096d0e4346ca231113cc04a96bb99455b6618",
-  "references/rueckmeldung.md": "bc5216462b08ca6483196835afc86c61cc49612ff066e5763cd8cdae6cd94f42",
-  "references/unterhaltsreinigung.md": "8b70fee747afecba7dbb6e51cf074e41eefa48c9533f69a00e90baf7789fafb4",
-  "references/winterdienst.md": "fcdf9bb3a9b3c20ad793acd4c6aa45c314493bdd14a551a51078a9eedcdec0b7"
+  "SKILL.md": "fee22a987a3657a91448a47811d0ba0ce35114ef0d308a89b4012d680c5e8c39"
  }
 }
