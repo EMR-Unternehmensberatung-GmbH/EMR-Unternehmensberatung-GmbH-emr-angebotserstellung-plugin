@@ -7,7 +7,7 @@
 - Rundung: kaufmännisch auf volle Euro (ab ,50 aufrunden) – nur der Endbetrag.
 
 ## Monatsfaktor (`katalog` → `turnusse`)
-- Wochenbasiert: Häufigkeit pro Woche × 4,35 (z. B. 3× = 13,05; 5× = 21,75; 14-tägig = 2,175)
+- Wochenbasiert: Häufigkeit pro Woche × 4,33 (z. B. 3× = 12,99; 5× = 21,65; 14-tägig = 2,165)
 - Monats-/jahresbasiert: Häufigkeit pro Jahr ÷ 12 (1× monatlich = 1,0; quartalsweise = 0,333)
 - **Kalkulationsblatt des Auftraggebers**: Schreibt eine Ausschreibung andere Faktoren vor (z. B. Arbeitstage-
   basiert, 6× = 25,33), je Position `"monatsfaktor": <Wert>` + `begruendung` setzen. Das Skript meldet die
