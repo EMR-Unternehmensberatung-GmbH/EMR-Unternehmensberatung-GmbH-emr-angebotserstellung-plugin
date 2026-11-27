@@ -1,8 +1,8 @@
 {
  "_hinweis": "Fingerabdrücke der Dateien dieses Skills, wie EMR ihn ausgeliefert hat. Nicht ändern.",
- "version": "2.2.0",
+ "version": "2.2.1",
  "dateien": {
-  "SKILL.md": "ed8277e0337bda16dbc15ddec9dff1639f1cf5686396f6166cb5a32fb7f05362",
+  "SKILL.md": "3c3de804e3c50029d0bf93c09dcf5ad380d74be0ef83ba2ed2d3b3eb586ab030",
   "assets/firma.vorlage.yaml": "4e6e7a068709cbfcb362d023dfa922c9ee9019cedcba485cfd180cc2be46ac82",
   "references/angebot_schema.md": "09161fdce84366fe5343017c81adc65f49a01aa7c6041037bf5d0788fd64615c",
   "references/angebotsnummer_mendato.md": "622bb0a185c682cfcbe3e325f2c430d3dd52868b03c6d6ae7d0e6068b05ee718",
